@@ -1,0 +1,58 @@
+# -----------------------------------------------------
+# Matugen Generated Files (Auto-generated from wallpapers)
+# -----------------------------------------------------
+# These files are automatically created by matugen when wallpapers change
+# and should not be tracked in git as they're temporary/generated content
+
+# Color scheme files (generated from wallpapers)
+dotfiles/.config/kitty/colors-matugen.conf
+dotfiles/.config/hypr/colors.conf
+dotfiles/.config/waybar/colors.css
+dotfiles/.config/gtk-3.0/colors.css
+dotfiles/.config/gtk-4.0/colors.css
+dotfiles/.config/wlogout/colors.css
+dotfiles/.config/swaync/colors.css
+dotfiles/.config/nwg-dock-hyprland/colors.css
+dotfiles/.config/ohmyposh/colors.json
+dotfiles/.config/ohmyposh/EDM115-newline.omp.json
+
+# Rofi generated colors (but keep the matugen.rasi as it's the template)
+dotfiles/.config/rofi/colors.rasi
+
+# Cache and temporary files
+.cache/
+**/cache/
+**/.cache/
+**/tmp/
+**/.tmp/
+
+# -----------------------------------------------------
+# System Generated Files
+# -----------------------------------------------------
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# -----------------------------------------------------
+# ML4W Generated Files  
+# -----------------------------------------------------
+# ML4W dotfiles may generate some runtime files
+dotfiles/.config/ml4w/cache/
+dotfiles/.config/ml4w/logs/
+
+# -----------------------------------------------------
+# Waypaper Configuration (may contain system-specific paths)
+# -----------------------------------------------------
+dotfiles/.config/waypaper/config.ini
