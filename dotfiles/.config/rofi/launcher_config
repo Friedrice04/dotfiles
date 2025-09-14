@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Rofi Launcher Switcher System
+# Configuration file to store current launcher selection
+
+# Current launcher configuration
+LAUNCHER_TYPE="type-3"
+LAUNCHER_STYLE="style-9"
+
+# Available types and styles
+AVAILABLE_TYPES=("type-1" "type-2" "type-3" "type-4" "type-5" "type-6" "type-7")
+
+# Number of styles per type (adjust if needed)
+declare -A STYLES_PER_TYPE=(
+    ["type-1"]="15"
+    ["type-2"]="15" 
+    ["type-3"]="10"
+    ["type-4"]="10"
+    ["type-5"]="5"
+    ["type-6"]="10"
+    ["type-7"]="10"
+)

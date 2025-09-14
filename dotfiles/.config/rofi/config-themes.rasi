@@ -1,0 +1,201 @@
+/*
+#  ____        __ _  
+# |  _ \ ___  / _(_) 
+# | |_) / _ \| |_| | 
+# |  _ < (_) |  _| | 
+# |_| \_\___/|_| |_| 
+#                    
+# by Stephan Raabe (2023) 
+# Updated for matugen colors
+# ----------------------------------------------------- 
+*/
+
+/* ---- Configuration ---- */
+configuration {
+    modi:                       "drun,filebrowser,window,run";
+    font:                       "Fira Sans 11";
+    show-icons:                 true;
+    icon-theme:                 "Tela-circle-dracula";
+    display-drun:                " ";
+    display-run:                 " ";
+    display-filebrowser:         " ";
+    display-window:              " ";
+	drun-display-format:        "{name}";
+    hover-select:               false;
+    scroll-method:              1;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
+    window-format:              "{c} · {t}";
+}
+
+/* ---- Load matugen colors instead of hardcoded ones ---- */
+@theme "~/.config/rofi/colors/matugen.rasi"
+
+// Main //
+window {
+    width:                        25em;
+    x-offset:                     0em;
+    y-offset:                     2em;
+    spacing:                      0em;
+    padding:                      0em;
+    margin:                       0px; 
+    color:                        #FFFFFF;
+    border:                       2px;
+    border-color:                 @selected;
+    background-color:             @background;
+    cursor:                       "default";
+    transparency:                 "real";
+    location:                     north;
+    anchor:                       north;
+    fullscreen:                   false;
+    enabled:                      true;
+    border-radius:                15px;
+    background-color:             @background;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     0em;
+    padding:                     0em;
+    background-color:            transparent;
+    children:                    [ "inputbar", "message", "mode-switcher", "listview" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     0em;
+    padding:                     0.5em;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "⚙";
+    padding:                     0.5em;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+}
+
+entry {
+    enabled:                     true;
+    padding:                     0.5em;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search";
+    placeholder-color:           inherit;
+}
+
+mode-switcher{
+    enabled:                     true;
+    padding:                     0em;
+    spacing:                     0em;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+button {
+    padding:                     0.6em;
+    background-color:            @background-alt;
+    text-color:                  inherit;
+    cursor:                      pointer;
+}
+
+button selected {
+    background-color:            @selected;
+    text-color:                  @foreground;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     0em;
+    padding:                     0em;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    spacing:                     0.5em;
+    padding:                     0.5em;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+element normal.urgent {
+    background-color:            @urgent;
+    text-color:                  @foreground;
+}
+
+element normal.active {
+    background-color:            @active;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @foreground;
+}
+
+element selected.urgent {
+    background-color:            @urgent;
+    text-color:                  @foreground;
+}
+
+element selected.active {
+    background-color:            @selected;
+    text-color:                  @foreground;
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        1em;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+message {
+    background-color:            transparent;
+}
+
+textbox {
+    padding:                     0.5em;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+error-message {
+    padding:                     0.5em;
+    background-color:            @background;
+    text-color:                  @foreground;
+}

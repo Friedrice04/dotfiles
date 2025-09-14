@@ -1,0 +1,30 @@
+/**
+ *
+ * Matugen Color Scheme
+ * Uses system theme colors from matugen
+ * This imports the generated colors and provides compatibility mappings
+ * 
+ **/
+
+/* Import matugen generated colors from the standard location */
+@import "~/.config/rofi/colors.rasi"
+
+* {
+    /* Map generated matugen colors to standard rofi theme variables */
+    background:     @surface;
+    background-alt: @surface-container;
+    foreground:     @on-surface;
+    selected:       @primary-container;
+    active:         @primary;
+    urgent:         @error;
+    
+    /* Additional color mappings for compatibility */
+    bg-col:         @surface;
+    bg-col-light:   @surface-container;
+    border-col:     @outline;
+    selected-col:   @primary-container;
+    blue:           @primary;
+    fg-col:         @on-surface;
+    fg-col2:        @on-primary-container;
+    grey:           @outline-variant;
+}

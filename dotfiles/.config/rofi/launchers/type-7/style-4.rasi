@@ -16,18 +16,15 @@ configuration {
     display-filebrowser:        "";
     display-window:             "";
 	drun-display-format:        "{name}";
-	window-format:              "{w} · {c} · {t}";
+	window-format:              "{c} · {t}";
 }
 
 /*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/colors/matugen.rasi"
+@import                          "~/.cache/ml4w/hyprland-dotfiles/current_wallpaper.rasi"
+
 * {
     font:                        "JetBrains Mono Nerd Font 10";
-    background:                  #2D1B14;
-    background-alt:              #462D23;
-    foreground:                  #FFFFFF;
-    selected:                    #E25F3E;
-    active:                      #7B6C5B;
-    urgent:                      #934A1C;
 }
 
 /*****----- Main Window -----*****/

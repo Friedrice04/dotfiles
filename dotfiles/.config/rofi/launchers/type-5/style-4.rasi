@@ -16,10 +16,12 @@ configuration {
     display-filebrowser:        "";
     display-window:             "";
 	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
-	window-format:              "{w}   {c}   {t}";
+	window-format:              "{c}   {t}";
 }
 
 /*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/colors/matugen.rasi"
+
 * {
     font:                        "Iosevka Nerd Font 10";
 }
@@ -41,7 +43,7 @@ window {
     padding:                     0px;
     border-radius:               20px;
     cursor:                      "default";
-    background-color:            #22272C;
+    background-color:            @background;
 }
 
 /*****----- Main Box -----*****/
@@ -120,16 +122,16 @@ element {
     cursor:                      pointer;
 }
 element normal.active {
-    background-image:            linear-gradient(to right, #4C4F52, #2E343B);
-    text-color:                  #19B466;
+    background-color:            @background-alt;
+    text-color:                  @active;
 }
 element selected.normal {
-    background-image:            linear-gradient(to right, #4C4F52, #2E343B);
-    text-color:                  #FF9030;
+    background-color:            @background-alt;
+    text-color:                  @selected;
 }
 element selected.active {
-    background-image:            linear-gradient(to right, #4C4F52, #2E343B);
-    text-color:                  #EA5553;
+    background-color:            @background-alt;
+    text-color:                  @urgent;
 }
 element-icon {
     background-color:            transparent;
@@ -152,7 +154,7 @@ mode-switcher{
     margin:                      0px 200px;
     padding:                     12px;
     border-radius:               100%;
-    background-color:            #2E343B;
+    background-color:            @background-alt;
 }
 button {
     background-color:            inherit;
@@ -161,19 +163,19 @@ button {
 }
 button selected {
     background-color:            inherit;
-    text-color:                  #FF9030;
+    text-color:                  @active;
 }
 
 /*****----- Message -----*****/
 error-message {
     padding:                     20px;
-    background-color:            #22272C;
+    background-color:            @background;
     text-color:                  white;
 }
 message {
     padding:                     0px;
     background-color:            inherit;
-    text-color:                  #FF9030;
+    text-color:                  @active;
 }
 textbox {
     padding:                     0px;

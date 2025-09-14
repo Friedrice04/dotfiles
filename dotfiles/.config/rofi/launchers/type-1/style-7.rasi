@@ -16,7 +16,7 @@ configuration {
     display-filebrowser:        " Files";
     display-window:             " Windows";
 	drun-display-format:        "{name}";
-	window-format:              "{w} · {c} · {t}";
+	window-format:              "{c} · {t}";
 }
 
 /*****----- Global Properties -----*****/

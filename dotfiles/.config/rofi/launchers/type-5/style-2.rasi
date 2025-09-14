@@ -16,10 +16,12 @@ configuration {
     display-filebrowser:        "FILES";
     display-window:             "WINDOW";
 	drun-display-format:        "{name}\n[<span weight='light' size='small'><i>({generic})</i></span>]";
-	window-format:              "Class : {c}\nWorkspace : {w}";
+	window-format:              "Class: {c}";
 }
 
 /*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/colors/matugen.rasi"
+
 * {
     font:                        "Iosevka Nerd Font 10";
 }
@@ -114,16 +116,16 @@ element {
     cursor:                      pointer;
 }
 element normal.active {
-    background-color:            #67FF80;
-    text-color:                  black;
+    background-color:            @active;
+    text-color:                  @foreground;
 }
 element selected.normal {
-    background-color:            #FDD66F;
-    text-color:                  black;
+    background-color:            @selected;
+    text-color:                  @foreground;
 }
 element selected.active {
-    background-color:            #FF7F7C;
-    text-color:                  black;
+    background-color:            @urgent;
+    text-color:                  @foreground;
 }
 element-icon {
     background-color:            transparent;
@@ -152,12 +154,12 @@ button {
     padding:                     6px;
     border:                      0px solid;
     border-radius:               100%;
-    background-color:            #719DF9;
+    background-color:            @active;
     text-color:                  inherit;
     cursor:                      pointer;
 }
 button selected {
-    background-color:            #F37277;
+    background-color:            @selected;
     text-color:                  inherit;
 }
 

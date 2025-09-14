@@ -56,9 +56,9 @@ configuration {
 	}
 
 	/*---------- Window switcher settings ----------*/
-	window-match-fields: "title,class,role,name,desktop";
+	window-match-fields: "title,class";
 	window-command: "wmctrl -i -R {window}";
-	window-format: "{w} - {c} - {t:0}";
+	window-format: "{c} · {t}";
 	window-thumbnail: false;
 
 	/*---------- Combi settings ----------*/
@@ -179,3 +179,6 @@ configuration {
 	me-accept-custom: "Control+MouseDPrimary";
 */
 }
+
+/*---------- Theme ----------*/
+@theme "~/.config/rofi/colors/matugen.rasi"
