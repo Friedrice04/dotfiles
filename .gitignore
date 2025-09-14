@@ -4,23 +4,32 @@
 # These files are automatically created by matugen when wallpapers change
 # and should not be tracked in git as they're temporary/generated content
 
-# Pattern-based ignoring for matugen output files (RECOMMENDED)
-# This covers any new matugen templates you add in the future
-**/colors.css           # Most UI components use this pattern
-**/colors.json          # JSON color files  
-**/colors.conf          # Configuration color files
-**/colors.rasi          # Rofi color files
-**/colors-matugen.*     # Explicitly matugen-named files
-**/*-colors.*           # Files with "-colors" in the name
+# Specific matugen output files from config.toml
+dotfiles/.config/kitty/colors-matugen.conf         # Kitty colors
+dotfiles/.config/hypr/colors.conf                  # Hyprland colors
+dotfiles/.config/waybar/colors.css                 # Waybar colors
+dotfiles/.config/rofi/colors.rasi                  # Rofi colors
+dotfiles/.config/gtk-3.0/colors.css                # GTK3 colors
+dotfiles/.config/gtk-4.0/colors.css                # GTK4 colors
+dotfiles/.config/wlogout/colors.css                # Wlogout colors
+dotfiles/.config/swaync/colors.css                 # SwayNC colors
+dotfiles/.config/nwg-dock-hyprland/colors.css      # NWG Dock colors
+dotfiles/.config/ohmyposh/colors.json              # Oh My Posh colors
+dotfiles/.config/ohmyposh/EDM115-newline.omp.json  # Oh My Posh theme (modified by post_hook)
+dotfiles/.config/rofi/colors/matugen.rasi          # Rofi matugen theme
+dotfiles/.config/kitty/nmtui.conf                  # Kitty nmtui config (matugen generated)
 
-# Edge cases that don't fit patterns
-dotfiles/.config/hypr/colors.conf                  # Specific naming
-dotfiles/.config/ohmyposh/EDM115-newline.omp.json  # Modified theme file
-dotfiles/.config/waypaper/config.ini               # System-specific paths
+# Pywalfox and wal cache files
+.cache/wal/colors.json                             # Pywalfox colors
+.cache/wal/sequences                               # Terminal sequences
 
-# Keep matugen templates (these should be tracked)
+# Pattern-based ignoring for any future matugen outputs
+**/colors-matugen.*     # Any matugen-specific color files
+**/matugen-colors.*     # Alternative naming patterns
+
+# Keep matugen templates and config (these should be tracked)
 !dotfiles/.config/matugen/templates/**
-!dotfiles/.config/rofi/colors/matugen.rasi
+!dotfiles/.config/matugen/config.toml
 
 # Cache and temporary files
 .cache/

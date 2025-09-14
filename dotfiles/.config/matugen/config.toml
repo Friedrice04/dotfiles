@@ -51,6 +51,12 @@ input_path = '~/.config/matugen/templates/ohmyposh-colors.json'
 output_path = '~/.config/ohmyposh/colors.json'
 post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette[0]' ~/.config/ohmyposh/EDM115-newline.omp.json > /tmp/new_theme.json && mv /tmp/new_theme.json ~/.config/ohmyposh/EDM115-newline.omp.json"
 
-# [templates.rofi-wallpaper]
-# input_path = '~/.config/matugen/templates/rofi-wallpaper.rasi'
-# output_path = '~/.cache/ml4w/hyprland-dotfiles/current_wallpaper.rasi'
+# Rofi template for our enhanced rofi system
+[templates.rofi-matugen]
+input_path = '~/.config/matugen/templates/rofi-wallpaper.rasi'
+output_path = '~/.config/rofi/colors/matugen.rasi'
+
+# Kitty nmtui template for readable TUI with matugen colors
+[templates.kitty-nmtui]
+input_path = '~/.config/matugen/templates/kitty-nmtui.conf'
+output_path = '~/.config/kitty/nmtui.conf'

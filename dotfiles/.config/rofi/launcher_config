@@ -4,8 +4,8 @@
 # Configuration file to store current launcher selection
 
 # Current launcher configuration
-LAUNCHER_TYPE="type-3"
-LAUNCHER_STYLE="style-9"
+LAUNCHER_TYPE="type-7"
+LAUNCHER_STYLE="style-2"
 
 # Available types and styles
 AVAILABLE_TYPES=("type-1" "type-2" "type-3" "type-4" "type-5" "type-6" "type-7")
