@@ -55,6 +55,30 @@ elif [[ "$1" == "--kill" ]]; then
     eval "$SIDEPAD_PATH --class '$SIDEPAD_CLASS' --kill"
 elif [[ "$1" == "--select" ]]; then
     select_sidepad
+elif [[ "$1" == "--toggle" ]]; then
+    # Toggle functionality - smart show/hide detection
+    
+    # Check if sidepad window exists by looking for the window class
+    SIDEPAD_WINDOW=$(hyprctl clients -j 2>/dev/null | jq -r '.[] | select(.class == "dotfiles-sidepad") | .address')
+    
+    if [[ -n "$SIDEPAD_WINDOW" && "$SIDEPAD_WINDOW" != "null" ]]; then
+        # Window exists, check if it's visible (position X > -1000 means visible)
+        SIDEPAD_X_POS=$(hyprctl clients -j 2>/dev/null | jq -r '.[] | select(.class == "dotfiles-sidepad") | .at[0]')
+        
+        if [[ "$SIDEPAD_X_POS" -gt "-500" ]]; then
+            # Sidepad is visible, hide it
+            echo ":: Hiding visible sidepad (X position: $SIDEPAD_X_POS)"
+            eval "$SIDEPAD_PATH --class '$SIDEPAD_CLASS' --hide"
+        else
+            # Sidepad exists but is hidden (off-screen), show it
+            echo ":: Showing hidden sidepad (X position: $SIDEPAD_X_POS)"
+            eval "$SIDEPAD_PATH --class '$SIDEPAD_CLASS'"
+        fi
+    else
+        # Sidepad window doesn't exist, initialize and show it
+        echo ":: Initializing and showing new sidepad"
+        eval "$SIDEPAD_PATH --class '$SIDEPAD_CLASS' --init '$SIDEPAD_APP'"
+    fi
 else
     eval "$SIDEPAD_PATH --class '$SIDEPAD_CLASS' $SIDEPAD_OPTIONS"
 fi
