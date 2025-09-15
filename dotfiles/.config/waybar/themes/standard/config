@@ -13,11 +13,11 @@
     ],
     // Modules Left
     "modules-left": [
-        "custom/appmenu",
+//        "custom/appmenu",
         "group/special_workspaces",
-        "group/links",
+//        "group/links",
         //"wlr/taskbar",
-        "group/quicklinks",
+//        "group/quicklinks",
         "hyprland/window",
         "custom/empty"
     ],
