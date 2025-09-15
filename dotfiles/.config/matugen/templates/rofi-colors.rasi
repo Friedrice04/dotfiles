@@ -45,4 +45,11 @@
     surface-container: {{colors.surface_container.default.hex}};
     surface-container-high: {{colors.surface_container_high.default.hex}};
     surface-container-highest: {{colors.surface_container_highest.default.hex}};
+    
+    /* Basic rofi variables for theme compatibility */
+    foreground: {{colors.on_surface.default.hex}};
+    background-alt: {{colors.surface_container.default.hex}};
+    selected: {{colors.primary.default.hex}};
+    active: {{colors.tertiary.default.hex}};
+    urgent: {{colors.error.default.hex}};
 }

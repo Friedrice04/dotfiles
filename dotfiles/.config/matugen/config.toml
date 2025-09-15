@@ -53,7 +53,7 @@ post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette
 
 # Rofi template for our enhanced rofi system
 [templates.rofi-matugen]
-input_path = '~/.config/matugen/templates/rofi-wallpaper.rasi'
+input_path = '~/.config/matugen/templates/rofi-matugen.rasi'
 output_path = '~/.config/rofi/colors/matugen.rasi'
 
 # Kitty nmtui template for readable TUI with matugen colors

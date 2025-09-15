@@ -1,0 +1,41 @@
+* {
+    /* Basic rofi theme variables */
+    background: {{colors.surface.default.rgba | set_alpha: 0.9}};
+    foreground: {{colors.on_surface.default.hex}};
+    background-alt: {{colors.surface_container.default.hex}};
+    selected: {{colors.primary.default.hex}};
+    active: {{colors.tertiary.default.hex}};
+    urgent: {{colors.error.default.hex}};
+    
+    /* Material Design 3 color palette for advanced themes */
+    primary: {{colors.primary.default.hex}};
+    on-primary: {{colors.on_primary.default.hex}};
+    primary-container: {{colors.primary_container.default.hex}};
+    on-primary-container: {{colors.on_primary_container.default.hex}};
+    
+    secondary: {{colors.secondary.default.hex}};
+    on-secondary: {{colors.on_secondary.default.hex}};
+    secondary-container: {{colors.secondary_container.default.hex}};
+    on-secondary-container: {{colors.on_secondary_container.default.hex}};
+    
+    tertiary: {{colors.tertiary.default.hex}};
+    on-tertiary: {{colors.on_tertiary.default.hex}};
+    tertiary-container: {{colors.tertiary_container.default.hex}};
+    on-tertiary-container: {{colors.on_tertiary_container.default.hex}};
+    
+    surface: {{colors.surface.default.hex}};
+    on-surface: {{colors.on_surface.default.hex}};
+    surface-variant: {{colors.surface_variant.default.hex}};
+    on-surface-variant: {{colors.on_surface_variant.default.hex}};
+    
+    error: {{colors.error.default.hex}};
+    on-error: {{colors.on_error.default.hex}};
+    error-container: {{colors.error_container.default.hex}};
+    on-error-container: {{colors.on_error_container.default.hex}};
+    
+    outline: {{colors.outline.default.hex}};
+    outline-variant: {{colors.outline_variant.default.hex}};
+    
+    /* Remove background image */
+    background-image: none;
+}

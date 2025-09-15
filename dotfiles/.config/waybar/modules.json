@@ -408,15 +408,17 @@
   },
   // music workspace
   "custom/socialspace": {
-    "format": "{icon}",
-    "tooltip": "Social Workspace",
-    "exec": "~/.config/hypr/scripts/special-workspace-listener.sh social ' '",
+    "format": "{}",
+    "return-type": "json",
+    "tooltip": true,
+    "exec": "~/.config/waybar/special-workspace-monitor.sh social",
     "on-click": "hyprctl dispatch togglespecialworkspace social",
   },
   "custom/musicspace": {
-    "format": "{icon}",
-    "tooltip": "Music Workspace",
-    "exec": "~/.config/hypr/scripts/special-workspace-listener.sh music ' '",
+    "format": "{}",
+    "return-type": "json",
+    "tooltip": true,
+    "exec": "~/.config/waybar/special-workspace-monitor.sh music",
     "on-click": "hyprctl dispatch togglespecialworkspace music",
   },
 
