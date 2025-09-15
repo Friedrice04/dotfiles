@@ -69,15 +69,32 @@ elif [[ "$1" == "--toggle" ]]; then
             # Sidepad is visible, hide it
             echo ":: Hiding visible sidepad (X position: $SIDEPAD_X_POS)"
             eval "$SIDEPAD_PATH --class '$SIDEPAD_CLASS' --hide"
+            # Focus back to a window on the main workspace after hiding
+            sleep 0.1  # Small delay to ensure sidepad is hidden
+            # Get the current active workspace and focus any window there
+            CURRENT_WORKSPACE=$(hyprctl activeworkspace -j | jq -r '.id')
+            MAIN_WINDOW=$(hyprctl clients -j | jq -r ".[] | select(.workspace.id == $CURRENT_WORKSPACE and .class != \"dotfiles-sidepad\") | .address" | head -1)
+            if [[ -n "$MAIN_WINDOW" && "$MAIN_WINDOW" != "null" ]]; then
+                hyprctl dispatch focuswindow "address:$MAIN_WINDOW"
+            else
+                # If no window on current workspace, just dispatch a focus command
+                hyprctl dispatch focuswindow ""
+            fi
         else
             # Sidepad exists but is hidden (off-screen), show it
             echo ":: Showing hidden sidepad (X position: $SIDEPAD_X_POS)"
             eval "$SIDEPAD_PATH --class '$SIDEPAD_CLASS'"
+            # Focus the sidepad window after showing it
+            sleep 0.1  # Small delay to ensure window is shown
+            hyprctl dispatch focuswindow "class:$SIDEPAD_CLASS"
         fi
     else
         # Sidepad window doesn't exist, initialize and show it
         echo ":: Initializing and showing new sidepad"
         eval "$SIDEPAD_PATH --class '$SIDEPAD_CLASS' --init '$SIDEPAD_APP'"
+        # Focus the sidepad window after initializing it
+        sleep 0.2  # Slightly longer delay for initialization
+        hyprctl dispatch focuswindow "class:$SIDEPAD_CLASS"
     fi
 else
     eval "$SIDEPAD_PATH --class '$SIDEPAD_CLASS' $SIDEPAD_OPTIONS"
