@@ -43,18 +43,16 @@ check_active_workspace() {
 output_status() {
     local is_active="$1"
     local icon="${WORKSPACES[$WORKSPACE_NAME]}"
-    local class="special-workspace $WORKSPACE_NAME"
+    local class=""
     
-    # Waybar applies .active class based on the "active" field in JSON
+    # Set class to "active" when workspace is visible
     if [[ "$is_active" == "true" ]]; then
-        cat << EOF
-{"text":"$icon","class":"$class","tooltip":"Special workspace: $WORKSPACE_NAME","active":true}
-EOF
-    else
-        cat << EOF
-{"text":"$icon","class":"$class","tooltip":"Special workspace: $WORKSPACE_NAME","active":false}
-EOF
+        class="active"
     fi
+    
+    cat << EOF
+{"text":"$icon","class":"$class","tooltip":"Special workspace: $WORKSPACE_NAME"}
+EOF
 }
 
 # Initialize state - special workspaces start as inactive

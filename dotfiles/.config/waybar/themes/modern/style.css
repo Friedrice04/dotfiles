@@ -89,7 +89,7 @@ window#waybar {
 }
 
 #custom-socialspace, #custom-musicspace {
-    padding: 0px 6px;
+    padding: 0px 10px;
     margin: 3px 2px;
     border-radius: 3px 3px 3px 3px;
     color: @on_surface;
