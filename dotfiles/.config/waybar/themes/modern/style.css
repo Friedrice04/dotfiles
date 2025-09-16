@@ -75,6 +75,38 @@ window#waybar {
 }
 
 /* -----------------------------------------------------
+ * Special Workspaces
+ * ----------------------------------------------------- */
+
+#special_workspaces {
+    background: @border_color;
+    margin: 2px 18px 3px 1px;
+    padding: 0px 2px;
+    border-radius: 5px 5px 5px 5px;
+    font-weight: bold;
+    font-style: normal;
+    color: @on_surface;
+}
+
+#custom-socialspace, #custom-musicspace {
+    padding: 0px 6px;
+    margin: 3px 2px;
+    border-radius: 3px 3px 3px 3px;
+    color: @on_surface;
+    background-color: @background;
+    transition: all 0.1s linear;   
+}
+
+#custom-socialspace.active, #custom-musicspace.active {
+    color: @on_primary_container;
+    background: @primary_container;
+    border-radius: 3px 3px 3px 3px;
+    min-width: 30px;
+    transition: all 0.1s linear;
+}
+
+
+/* -----------------------------------------------------
  * Tooltips
  * ----------------------------------------------------- */
 

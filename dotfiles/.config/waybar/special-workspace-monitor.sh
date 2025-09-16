@@ -3,10 +3,25 @@
 # Special workspace monitor for waybar using socat
 # Usage: special-workspace-monitor.sh <workspace_name>
 
+# Configuration - Add/remove workspaces here
+declare -A WORKSPACES=(
+    ["social"]="󰭹"
+    ["music"]="󰎈"
+    ["scratchpad"]="󰖲"
+)
+
 WORKSPACE_NAME="$1"
 
 if [ -z "$WORKSPACE_NAME" ]; then
     echo "Usage: $0 <workspace_name>" >&2
+    echo "Available workspaces: ${!WORKSPACES[*]}" >&2
+    exit 1
+fi
+
+# Check if workspace is configured
+if [[ ! -v WORKSPACES["$WORKSPACE_NAME"] ]]; then
+    echo "Error: Workspace '$WORKSPACE_NAME' not configured" >&2
+    echo "Available workspaces: ${!WORKSPACES[*]}" >&2
     exit 1
 fi
 
@@ -16,65 +31,64 @@ if [ ! -S "$SOCKET_PATH" ]; then
     SOCKET_PATH="/tmp/hypr/${HYPRLAND_INSTANCE_SIGNATURE}/socket2.sock"
 fi
 
-# Function to check if special workspace is currently active
+# Function to check if special workspace is currently active based on socket events
+# Special workspaces are never returned by hyprctl activeworkspace, only detectable via socket
 check_active_workspace() {
-    local active_workspace
-    active_workspace=$(hyprctl activeworkspace -j | jq -r '.name')
-    if [[ "$active_workspace" == "special:$WORKSPACE_NAME" ]]; then
-        echo "true"
-    else
-        echo "false"
-    fi
+    # For initial state, assume special workspace is not active
+    # This will be updated by socket events
+    echo "false"
 }
 
 # Function to output waybar JSON
 output_status() {
     local is_active="$1"
-    local class="inactive"
-    local icon=""
+    local icon="${WORKSPACES[$WORKSPACE_NAME]}"
+    local class="special-workspace $WORKSPACE_NAME"
     
+    # Waybar applies .active class based on the "active" field in JSON
     if [[ "$is_active" == "true" ]]; then
-        class="active"
-        case "$WORKSPACE_NAME" in
-            "social") icon="󰭹" ;;
-            "music") icon="󰎈" ;;
-            *) icon="󰖲" ;;
-        esac
-    else
-        case "$WORKSPACE_NAME" in
-            "social") icon="󰭹" ;;
-            "music") icon="󰎆" ;;
-            *) icon="󰖲" ;;
-        esac
-    fi
-    
-    cat << EOF
-{"text":"$icon","class":"$class","tooltip":"Special workspace: $WORKSPACE_NAME"}
+        cat << EOF
+{"text":"$icon","class":"$class","tooltip":"Special workspace: $WORKSPACE_NAME","active":true}
 EOF
+    else
+        cat << EOF
+{"text":"$icon","class":"$class","tooltip":"Special workspace: $WORKSPACE_NAME","active":false}
+EOF
+    fi
 }
 
-# Get initial state
-ACTIVE=$(check_active_workspace)
+# Initialize state - special workspaces start as inactive
+ACTIVE="false"
 output_status "$ACTIVE"
 
 # Monitor socket2 for events
-socat -u "UNIX-CONNECT:$SOCKET_PATH" - | while IFS= read -r event; do
+socat -u UNIX-CONNECT:/run/user/$(id -u)/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while IFS= read -r event; do
     case "$event" in
-        workspace\>\>special:$WORKSPACE_NAME)
-            # Special workspace became active
-            output_status "true"
-            ;;
-        workspace\>\>*)
-            # Any other workspace became active (special workspace is no longer active)
+        activespecial\>\>,*)
+            # Special workspace is being hidden (format: activespecial>>,monitor)
             if [[ "$ACTIVE" == "true" ]]; then
-                output_status "false"
                 ACTIVE="false"
+                output_status "$ACTIVE"
             fi
             ;;
-        destroyworkspace\>\>special:$WORKSPACE_NAME)
-            # Special workspace was destroyed
-            output_status "false"
-            ACTIVE="false"
+        activespecial\>\>special:$WORKSPACE_NAME,*)
+            # Our special workspace is being shown (format: activespecial>>special:workspace,monitor)
+            ACTIVE="true"
+            output_status "$ACTIVE"
+            ;;
+        activespecial\>\>special:*,*)
+            # Another special workspace is being shown
+            if [[ "$ACTIVE" == "true" ]]; then
+                ACTIVE="false"
+                output_status "$ACTIVE"
+            fi
+            ;;
+        workspace\>\>*)
+            # Regular workspace became active (special workspace is no longer active)
+            if [[ "$ACTIVE" == "true" ]]; then
+                ACTIVE="false"
+                output_status "$ACTIVE"
+            fi
             ;;
     esac
 done
