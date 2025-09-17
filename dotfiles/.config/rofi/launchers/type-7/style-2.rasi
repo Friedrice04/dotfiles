@@ -58,6 +58,8 @@ window {
 
     /* properties for all widgets */
     enabled:                     true;
+    border:                      2px solid;
+    border-color:                @primary;
     border-radius:               20px;
     cursor:                      "default";
     background-color:            transparent;

@@ -64,3 +64,8 @@ output_path = '~/.config/kitty/nmtui.conf'
 [templates.vesktop]
 input_path = '~/.config/matugen/templates/midnight-discord.css'
 output_path = '~/.config/BetterDiscord/themes/midnight-matugen.theme.css'
+
+[templates.spicetify]
+input_path = '~/.config/matugen/templates/spicetify.ini'
+output_path = '~/.config/spicetify/Themes/ComfyMatugen/color.ini'
+post_hook = 'spicetify config current_theme ComfyMatugen && spicetify config color_scheme ComfyMatugen && if pgrep -x spotify > /dev/null; then spicetify apply; fi'
