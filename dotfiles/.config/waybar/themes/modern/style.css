@@ -90,6 +90,7 @@ window#waybar {
 
 #custom-socialspace, #custom-musicspace {
     padding: 0px 10px;
+    min-width: 15px;
     margin: 3px 2px;
     border-radius: 3px 3px 3px 3px;
     color: @on_surface;
@@ -101,7 +102,7 @@ window#waybar {
     color: @on_primary_container;
     background: @primary_container;
     border-radius: 3px 3px 3px 3px;
-    min-width: 30px;
+    min-width: 25px;
     transition: all 0.1s linear;
 }
 

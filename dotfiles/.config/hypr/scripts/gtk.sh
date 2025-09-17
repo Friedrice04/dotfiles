@@ -47,7 +47,7 @@ if [ -f ~/.config/hypr/conf/cursor.conf ]; then
     hyprctl setcursor $cursor_theme $cursor_size
 fi
 
-# Update gsettings for open any terminal
-gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal "$terminal"
-gsettings set com.github.stunkymonkey.nautilus-open-any-terminal use-generic-terminal-name "true"
-gsettings set com.github.stunkymonkey.nautilus-open-any-terminal keybindings "<Ctrl><Alt>t"
+# Update gsettings for open any terminal (disabled - using Thunar instead of Nautilus)
+# gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal "$terminal"
+# gsettings set com.github.stunkymonkey.nautilus-open-any-terminal use-generic-terminal-name "true"
+# gsettings set com.github.stunkymonkey.nautilus-open-any-terminal keybindings "<Ctrl><Alt>t"
