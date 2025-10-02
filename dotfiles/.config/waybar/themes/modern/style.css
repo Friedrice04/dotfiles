@@ -88,7 +88,7 @@ window#waybar {
     color: @on_surface;
 }
 
-#custom-socialspace, #custom-musicspace {
+#custom-socialspace, #custom-musicspace, #custom-emailspace {
     padding: 0px 10px;
     min-width: 15px;
     margin: 3px 2px;
@@ -98,12 +98,17 @@ window#waybar {
     transition: all 0.1s linear;   
 }
 
-#custom-socialspace.active, #custom-musicspace.active {
+#custom-socialspace.active, #custom-musicspace.active, #custom-emailspace.active {
     color: @on_primary_container;
     background: @primary_container;
     border-radius: 3px 3px 3px 3px;
     min-width: 25px;
     transition: all 0.1s linear;
+}
+
+#custom-socialspace:hover, #custom-musicspace:hover, #custom-emailspace:hover {
+    color: @on_primary_container;
+    background: @primary_container;
 }
 
 
@@ -492,11 +497,12 @@ window#waybar.empty #window {
 #battery.critical:not(.charging) {
     background-color: @error;
     color: @on_error;
-    animation-name: blink;
+/*    animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+*/
 }
 
 /* -----------------------------------------------------
@@ -513,4 +519,15 @@ window#waybar.empty #window {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
+}
+
+/* -----------------------------------------------------
+ * Password Manager
+ * ----------------------------------------------------- */
+
+#custom-passwordmgr {
+    margin: 0px 13px 0px 0px;
+    padding: 0px;
+    font-size: 18px;
+    color: @icon_color;
 }

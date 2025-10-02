@@ -18,7 +18,7 @@
         "hyprland/workspaces",
         "group/links",
         //"wlr/taskbar",
-        "group/quicklinks",
+//        "group/quicklinks",
         "custom/empty"
     ],
     // Modules Center
@@ -37,6 +37,7 @@
         "group/hardware",
 //        "group/tools",
         "tray",
+        "custom/passwordmgr",
         "custom/notification",
         "custom/exit",
 //        "custom/ml4w-welcome",

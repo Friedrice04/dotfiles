@@ -404,9 +404,10 @@
     "modules": [
         "custom/socialspace",
         "custom/musicspace",
+        "custom/emailspace"
     ]
   },
-  // music workspace
+  // Social Workspace
   "custom/socialspace": {
     "format": "{}",
     "return-type": "json",
@@ -414,6 +415,7 @@
     "exec": "~/.config/waybar/special-workspace-monitor.sh social",
     "on-click": "hyprctl dispatch togglespecialworkspace social",
   },
+  // Music Workspace
   "custom/musicspace": {
     "format": "{}",
     "return-type": "json",
@@ -421,5 +423,19 @@
     "exec": "~/.config/waybar/special-workspace-monitor.sh music",
     "on-click": "hyprctl dispatch togglespecialworkspace music",
   },
-
+  // eMail Workspace
+  "custom/emailspace": {
+    "format": "{}",
+    "return-type": "json",
+    "tooltip": true,
+    "exec": "~/.config/waybar/special-workspace-monitor.sh email",
+    "on-click": "hyprctl dispatch togglespecialworkspace email",
+  },
+  
+  // Password Manager
+  "custom/passwordmgr": {
+    "format": "",
+    "tooltip-format": "Bitwarden",
+    "on-click": "bitwarden-desktop",
+  },
 }

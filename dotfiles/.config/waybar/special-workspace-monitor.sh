@@ -8,6 +8,7 @@ declare -A WORKSPACES=(
     ["social"]="󰭹"
     ["music"]="󰎈"
     ["scratchpad"]="󰖲"
+    ["email"]="✉"
 )
 
 WORKSPACE_NAME="$1"

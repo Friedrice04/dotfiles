@@ -36,3 +36,6 @@ if [ -f ~/.zshrc_custom ]; then
 fi
 
 export PATH="$HOME/.spicetify:$PATH"
+export PATH="/opt/anaconda/bin:$PATH"
+export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+

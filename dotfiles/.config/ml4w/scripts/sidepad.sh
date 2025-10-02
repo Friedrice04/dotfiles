@@ -69,16 +69,37 @@ elif [[ "$1" == "--toggle" ]]; then
             # Sidepad is visible, hide it
             echo ":: Hiding visible sidepad (X position: $SIDEPAD_X_POS)"
             eval "$SIDEPAD_PATH --class '$SIDEPAD_CLASS' --hide"
-            # Focus back to a window on the main workspace after hiding
+            # Focus back to a window on the current workspace after hiding
             sleep 0.1  # Small delay to ensure sidepad is hidden
-            # Get the current active workspace and focus any window there
-            CURRENT_WORKSPACE=$(hyprctl activeworkspace -j | jq -r '.id')
-            MAIN_WINDOW=$(hyprctl clients -j | jq -r ".[] | select(.workspace.id == $CURRENT_WORKSPACE and .class != \"dotfiles-sidepad\") | .address" | head -1)
+            
+            # Get the current active workspace info
+            ACTIVE_WORKSPACE=$(hyprctl activeworkspace -j)
+            WORKSPACE_NAME=$(echo "$ACTIVE_WORKSPACE" | jq -r '.name')
+            WORKSPACE_ID=$(echo "$ACTIVE_WORKSPACE" | jq -r '.id')
+            
+            # Find a suitable window to focus on the current workspace
+            if [[ "$WORKSPACE_NAME" == "special:"* ]]; then
+                # Handle special workspaces
+                echo ":: Focusing back to special workspace: $WORKSPACE_NAME"
+                MAIN_WINDOW=$(hyprctl clients -j | jq -r ".[] | select(.workspace.name == \"$WORKSPACE_NAME\" and .class != \"dotfiles-sidepad\" and .address != \"$(hyprctl activewindow -j | jq -r '.address')\") | .address" | head -1)
+            else
+                # Handle regular workspaces
+                echo ":: Focusing back to workspace: $WORKSPACE_ID"
+                MAIN_WINDOW=$(hyprctl clients -j | jq -r ".[] | select(.workspace.id == $WORKSPACE_ID and .class != \"dotfiles-sidepad\" and .address != \"$(hyprctl activewindow -j | jq -r '.address')\") | .address" | head -1)
+            fi
+            
             if [[ -n "$MAIN_WINDOW" && "$MAIN_WINDOW" != "null" ]]; then
+                echo ":: Focusing window: $MAIN_WINDOW"
                 hyprctl dispatch focuswindow "address:$MAIN_WINDOW"
             else
-                # If no window on current workspace, just dispatch a focus command
-                hyprctl dispatch focuswindow ""
+                # Fallback: focus the workspace itself
+                if [[ "$WORKSPACE_NAME" == "special:"* ]]; then
+                    hyprctl dispatch togglespecialworkspace "${WORKSPACE_NAME#special:}"
+                    sleep 0.1
+                    hyprctl dispatch togglespecialworkspace "${WORKSPACE_NAME#special:}"
+                else
+                    hyprctl dispatch workspace "$WORKSPACE_ID"
+                fi
             fi
         else
             # Sidepad exists but is hidden (off-screen), show it
