@@ -1,40 +1,40 @@
 * {
     /* Basic rofi theme variables */
-    background: rgba(26, 17, 16, 0.9);
-    foreground: #f1dfdb;
-    background-alt: #271d1b;
-    selected: #ffb4a5;
-    active: #dcc48c;
+    background: rgba(14, 21, 20, 0.9);
+    foreground: #dde4e2;
+    background-alt: #1a2120;
+    selected: #80d5d0;
+    active: #b1c9e8;
     urgent: #ffb4ab;
     
     /* Material Design 3 color palette for advanced themes */
-    primary: #ffb4a5;
-    on-primary: #561f13;
-    primary-container: #733427;
-    on-primary-container: #ffdad3;
+    primary: #80d5d0;
+    on-primary: #003735;
+    primary-container: #00504d;
+    on-primary-container: #9cf1ec;
     
-    secondary: #e7bdb4;
-    on-secondary: #442a24;
-    secondary-container: #5d3f39;
-    on-secondary-container: #ffdad3;
+    secondary: #b0ccc9;
+    on-secondary: #1b3533;
+    secondary-container: #324b4a;
+    on-secondary-container: #cce8e5;
     
-    tertiary: #dcc48c;
-    on-tertiary: #3d2f04;
-    tertiary-container: #554519;
-    on-tertiary-container: #f9e0a6;
+    tertiary: #b1c9e8;
+    on-tertiary: #1a324b;
+    tertiary-container: #314862;
+    on-tertiary-container: #d1e4ff;
     
-    surface: #1a1110;
-    on-surface: #f1dfdb;
-    surface-variant: #534340;
-    on-surface-variant: #d8c2bd;
+    surface: #0e1514;
+    on-surface: #dde4e2;
+    surface-variant: #3f4948;
+    on-surface-variant: #bec9c7;
     
     error: #ffb4ab;
     on-error: #690005;
     error-container: #93000a;
     on-error-container: #ffdad6;
     
-    outline: #a08c88;
-    outline-variant: #534340;
+    outline: #889391;
+    outline-variant: #3f4948;
     
     /* Remove background image */
     background-image: none;

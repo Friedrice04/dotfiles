@@ -3,13 +3,25 @@
 # -----------------------------------------------------
 
 # -----------------------------------------------------
+# Custom
+# -----------------------------------------------------
+bandit() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: bandit <level>"
+        echo "Example: bandit 0"
+        return 1
+    fi
+    ssh "bandit$1@bandit.labs.overthewire.org" -p 2220
+}
+
+# -----------------------------------------------------
 # General
 # -----------------------------------------------------
 alias c='clear'
 alias nf='fastfetch'
 alias pf='fastfetch'
 alias ff='fastfetch'
-#alias ls='eza -a --icons=always'
+alias ls='eza --icons=always'
 alias ll='eza -al --icons=always'
 alias lt='eza -a --tree --level=1 --icons=always'
 alias shutdown='systemctl poweroff'
